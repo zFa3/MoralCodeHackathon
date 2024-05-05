@@ -1,0 +1,188 @@
+html {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Scroll track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 1.5px black; 
+    border-radius: 10px;
+}
+
+/* Scroll bar handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(151, 255, 175, 1); 
+    border-radius: 10px;
+    }
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(51, 155, 75, 1); 
+}
+
+
+.background{
+    background-image: url(logo3.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.recipes{
+    background-image: url(Recipe.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -1;
+    margin-left: 0;
+    margin-top: 0;
+}
+
+.recipe-title{
+    text-align: center;
+    font-family: "Space Grotesk", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 225;
+    font-style: normal;
+    background-color: rgba(255, 255, 255, 0.3);
+    display: flex;
+    backdrop-filter: blur(12px);
+    margin: 0px;
+    color: rgb(32, 114, 155);
+    padding-top: 50px;
+    margin-top: 25%;
+    height: 50px;
+    width: 50px;
+    font-size: 100px;
+}
+
+.white-text{
+    color: white;
+}
+
+.banner {
+    text-align: center;
+    font-family: "Ubuntu", sans-serif;
+    border-radius: 5px;
+    justify-content: flex-start;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(12px);
+    display: flex;
+    z-index: 2;
+    position: sticky;
+    margin: 0px;
+    top: 0px;
+    margin-left: 0px;
+    padding: 5%;
+    width: 100%;
+    height: 75px;
+    color: black;
+}
+
+.text-center{
+    text-align: center;
+    align-items: center;
+}
+
+.backing {
+    text-align: center;
+    font-family: "Ubuntu", sans-serif;
+    border-radius: 5px;
+    justify-content: flex-start;
+    background-color: rgba(255, 255, 255, 0.3);
+    display: flex;
+    backdrop-filter: blur(12px);
+    z-index: 2;
+    margin: 0px;
+    width: 85vw;
+    color: black;
+}
+
+.mouse-tracker{
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    /*background: radial-gradient(rgba(255, 205, 205, 0.7), rgba(0, 0, 0, 0));*/
+    background: rgba(255, 205, 205, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.font{
+    font-family: "Ubuntu", sans-serif;
+    padding: 5%;
+}
+
+.line-break {
+    padding: 5%;
+}
+
+.handwriting {
+  font-family: "Briem Hand", cursive;
+  font-optical-sizing: 650;
+  font-weight: 250; /* 100 - 900 */
+  font-style: normal;
+}
+
+.teachers {
+    font-family: "Teachers", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+  }
+  
+
+.bottom {
+    text-align: left;
+    align-items: left;
+    justify-content: flex-start;
+    padding-left: 15vw;
+    background-color: #C0FFEE;
+    backdrop-filter: blur(12px);
+    display: flex;
+    z-index: 2;
+    padding: 0;
+    font-size: medium;
+    position: relative;
+    margin: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.introduction{
+    margin-top: 50px;
+}
+
+.vignetteAnimation{
+    animation-name: vignetteAnimation;
+    animation-duration: 3.5s;
+}
+
+.opacityAnimation{
+    animation-name: opacityAnimation;
+    animation-duration: 1.5s;
+}
+
+@keyframes opacityAnimation {
+    from {opacity: 0.3;}
+    to {opacity:1;}
+}
+
+@keyframes vignetteAnimation {
+    from {backdrop-filter:saturate(0.25);}
+    to {backdrop-filter:saturate(1);}
+}
+
+.logo {
+    position: absolute;
+    margin-left: 50px;
+}
