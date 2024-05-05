@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics</title>
+    
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% set active = 'login' %}
+    {% block content %}
+      {% for category, message in get_flashed_messages(with_categories=true) %}
+        <div class="{{ category }}">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </div>
+      {% endfor %}
+      <h1 class="banner">Improvement Over the Last Month</h1>
+      <img width="1300px" height="700px" src="static/graph01.png" alt="Pie Graph">
+      <br><br><br>
+      <h1>Top Wasted Foods in the Last Month</h1>
+      <img width="1300px" heights="700px" src="static/graph02.png" alt="Bar graph">
+      <br><br><br>
+      <h1>2022 Vs 2023</h1>
+      <img width="1300px" height="700px" src="static/graph03.png" alt="Bar graph">
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Settings</title>
+</head>
+<body class="background">
+    {% extends 'base.html' %}
+    {% block content %}
+      {% for category, message in get_flashed_messages(with_categories=true) %}
+        <div class="{{ category }}">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </div>
+      {% endfor %}
+      <br>
+      <div class="card mx-auto" style="width: 26rem;">
+        <div class="card-body p-4">
+          <h3 class="mb-4">User info</h3>
+          <form method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.username.label(class="form-label") }}
+            {{ form.username(class="form-control", value=current_user.username, placeholder="Username") }}
+            <br>
+            {{ form.email.label(class="form-label") }}
+            {{ form.email(class="form-control", value=current_user.email, placeholder="Email") }}
+            <br>
+            <div class="d-grid gap-2">
+              {{ form.update(class="btn btn-outline-primary") }}
+              <a href="{{ url_for('views.delete_user', id=current_user.id) }}" class="btn btn-outline-danger">Delete</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    {% endblock %}
+</body>
+</html>

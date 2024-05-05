@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon" />
+  <title></title>
+</head>
+
+<body>
+  {% set logged_in_items = [
+    ('views.profile', 'profile', 'Profile'),
+    ('views.settings', 'settings', 'Settings'),
+    ('views.foods', 'foods', 'Foods'),
+    ('views.analytics', 'analytics', 'Analytics'),
+    ('views.recipes', 'recipes', 'Recipes')
+  ] %}
+  {% set logged_out_items = [
+    ('views.login', 'login', 'Login'),
+    ('views.register', 'register', 'Register'),
+    ('views.analytics', 'analytics', 'Analytics')
+  ] %}
+  {% set active = active|default('views.index') %}
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{{ url_for('views.index') }}">
+        <img src="/static/favicon3.png" alt="" width="26" height="26" class="d-inline-block align-text-top">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          {% if current_user.is_authenticated %}
+          {% for href, page, title in logged_in_items %}
+          <li class="nav-item">
+            <a {% if page==active %} class="nav-link active" aria-current="page" {% else %} class="nav-link" {% endif %}
+              href="{{ url_for(href) }}">{{ title }}</a>
+          </li>
+          {% endfor %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('views.logout') }}">Logout</a>
+          </li>
+          {% else %}
+          {% for href, page, title in logged_out_items %}
+          <li class="nav-item">
+            <a {% if page==active %} class="nav-link active" aria-current="page" {% else %} class="nav-link" {% endif %}
+              href="{{ url_for(href) }}">{{ title }}</a>
+          </li>
+          {% endfor %}
+          {% endif %}
+        </ul>
+        {% if 'foods' == active %}
+        <a class="btn btn-primary" href="{{ url_for('views.add_food') }}">Add</a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

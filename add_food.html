@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add food</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% set active = 'add_food' %}
+    {% block content %}
+      {% for category, message in get_flashed_messages(with_categories=true) %}
+        <div class="{{ category }}">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </div>
+      {% endfor %}
+      <br>
+      <div class="card mx-auto" style="width: 40rem;">
+        <div class="card-body p-5">
+          <h2 class="mb-5">Add food item</h2>
+          <form method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.name.label(class="form-label") }}
+            {{ form.name(class="form-control", placeholder="Name") }}
+            <br>
+            {{ form.date.label(class="form-label") }}
+            {{ form.date(class="form-control") }}
+            <br>
+            <div class="d-grid">
+              {{ form.submit(class="btn btn-primary") }}
+            </div>
+          </form>
+        </div>
+      </div>
+      <br>
+    {% endblock %}
+</body>
+</html>

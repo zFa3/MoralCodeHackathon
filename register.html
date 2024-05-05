@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet", type ="text/css", href="../static/landing_page.css">
+    <title>Register</title>
+</head>
+<bod class="background">
+    {% extends 'base.html' %}
+    {% set active = 'register' %}
+    {% block content %}
+      {% for category, message in get_flashed_messages(with_categories=true) %}
+        <div class="{{ category }}">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </div>
+      {% endfor %}
+      <br>
+      <div class="card mx-auto" style="width: 26rem;">
+        <div class="card-body p-4">
+          <h3 class="mb-4">Sign up</h3>
+          <form method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.username.label(class="form-label") }}
+            {{ form.username(class="form-control", placeholder="Username") }}
+            <br>
+            {{ form.email.label(class="form-label") }}
+            {{ form.email(class="form-control", placeholder="Email") }}
+            <br>
+            {{ form.password_hash.label(class="form-label") }}
+            {{ form.password_hash(class="form-control", placeholder="Password") }}
+            <br>
+            {{ form.confirm_password.label(class="form-label") }}
+            {{ form.confirm_password(class="form-control", placeholder="Confirm password") }}
+            <br>
+            <div class="d-grid">
+              {{ form.signup(class="btn btn-primary") }}
+            </div>
+          </form>
+        </div>
+      </div>
+    {% endblock %}
+</body>
+</html>

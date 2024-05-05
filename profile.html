@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" , type="text/css" , href="../static/landing_page.css">
+  <title>Profile</title>
+  </script>
+</head>
+
+<body class="background white-text">
+  {% extends 'base.html' %}
+  {% set active = 'profile' %}
+  {% block content %}
+  {% for category, message in get_flashed_messages(with_categories=true) %}
+  <div class="{{ category }}">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+  </div>
+  {% endfor %}
+  <h1>Welcome, {{ current_user.username|title }}!</h1>
+  <br>
+  <br>
+  <h3>Mail</h3>
+  {% if mails %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Sender</th>
+        <th scope="col">Food</th>
+        <th scope="col">Message</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for mail in mails %}
+      <tr>
+        <td> EcoEats </td>
+        <td> {{ mail.name }} </td>
+        {% if (mail.expiry_date.date() - date_current).days == 1 %}
+        <td> Expires in 1 day </td>
+        {% else %}
+        <td> Expires in {{ (mail.expiry_date.date() - date_current).days }} days </td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="white-text">You have no current mail.</div>
+  {% endif %}
+  {% endblock %}
+</body>
+
+</html>

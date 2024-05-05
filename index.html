@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet", type ="text/css", href="../static/landing_page.css">
+    <!-- Access google fonts api to obtain the fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!--Fonts Used-->
+    <link href="https://fonts.googleapis.com/css2?family=Briem+Hand:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Briem+Hand:wght@100..900&family=Teachers:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <title>Title</title>
+    <!-- <link rel="icon" type="image/x-icon" href=""> --> <!--URL for Facivon Image-->
+    <script>
+        onmousemove = function(e){
+            // console.log("mouse location:", e.clientX, e.clientY);
+            document.getElementById("mouse").style.top = (e.clientY - 25) + "px"
+            document.getElementById("mouse").style.left = (e.clientX - 25) + "px"
+        }
+    </script>
+</head>
+<body class="background white-text">
+    {% extends 'base.html' %}
+    {% set active = 'index' %}
+    {% block content %}
+    <div class="mouse-tracker", id="mouse"></div>
+    <div class="text-center banner handwriting opacityAnimation">
+        <h1>Welcome to EcoEats!</h1h1>
+    </div>
+    <p class = "introduction">Tired of seeing perfectly good food being thrown out? Wanting to manage your budget and <br> have your own
+        personal AI constantly creating analytics and aiding you? You've came to the right place! <br><br>
+
+        EcoEats is an all in one application used for tracking, reducing, analyzing, and preventing food waste <br>
+        in your daily life. With the app, you can easily log in your foods, track consumption, and discover creative <br>
+        ways of reducing food waste!
+    </p><hr><br><br>
+    <!--
+        <img id ="logo" href="../static/Favicon.png">
+    -->
+    <div class="backing">
+        <h2 class = "font", style="text-align: center;"> Why use EcoEats? </h2>
+        <ul class="line-break" style="margin-left: 45px;">
+            <li>
+                <strong>Reduce Waste:</strong> Say goodbye to wasting large amounts of food. EcoEats will make the most 
+                of every single ingredient in your home!
+            </li>
+            <li> 
+                <strong>Save Money</strong> By optimizing and analyzing food consumption and shopping habits, you'll be 
+                saving money consistently and minimizing unnecessary purchases!
+            </li>
+            <li>
+                <strong>Save the Planet</strong> Every meal is important. When you reduce your food waste, you are contributing 
+                to ensuring the health of your planet.
+            </li>
+        </ul>
+    </div>
+    <br><br><br>
+    <div class="teachers">
+        <h2>How does it work? </h2>
+        <hr>
+        <ol>
+            <li> 
+                <strong>Log Your Food:</strong> Easily input current foods and ingredients in your home and we'll do the rest!
+        </li>
+        
+        <li>
+            <strong>Track Consumption:</strong> Monitor food usage and waste with simple diagrams and graphs.
+        </li>
+
+        <li>
+            <strong>Get Personalized Reccomendations:</strong> recieve suggestions from a specialized AI that uses machine learning 
+            and is specified to your preferences to get meal ideas, recipes, and more based off your ingredients. 
+        </li>
+
+        <li>
+            <strong>Give Us Feedback: </strong> Send us feedback on our page and we'll use it to improve the effectiveness 
+            of the application
+        </li>
+
+        <li>
+            <strong>Recieve Rewards:</strong> Recieve special coupons for popular food industries as rewards for reducing your 
+            food waste!
+        </li>
+    </div>
+        
+    <!--
+    <br><br><br><br><br><br><br><br><br>
+    <h2 class="bottom">Together, let's waste less and eat better!<h2>
+    -->
+    <br>
+    <hr>
+    {% endblock %}
+</body>
+</html>

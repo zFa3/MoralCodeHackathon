@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foods</title>
+  </head>
+  <body>
+    {% extends 'base.html' %}
+    {% set active = 'foods' %}
+    {% block content %}
+      {% for category, message in get_flashed_messages(with_categories=true) %}
+        <div class="{{ category }}">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </div>
+      {% endfor %}
+      <br>
+      {% if foods %}
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+          {% for food in foods %}
+            <div class="col">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h4><a href="{{ url_for('views.food', id=food.id) }}">{{ food.name }}</a></h4>
+                  <small>{{ food.expiry_date.date() }}</small>
+                  <br>
+                </div>
+                <div class="card-footer bg-transparent">
+                  <a href="{{ url_for('views.food_settings', id=food.id) }}" class="btn btn-outline-primary btn-sm">Edit Info</a>
+                  <a href="{{ url_for('views.delete_food', id=food.id) }}" class="btn btn-outline-danger btn-sm">Delete</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <h2>You have no foods added. Press the button in the top right corner to create one.</h2>
+      {% endif %}
+    {% endblock %}
+  </body>
+</html>

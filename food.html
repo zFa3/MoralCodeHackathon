@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    {% extends 'base.html' %}
+    {% block content %}
+      {% for category, message in get_flashed_messages(with_categories=true) %}
+        <div class="{{ category }}">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </div>
+      {% endfor %}
+      <div class="shadow p-3 mb-5 bg-body rounded">
+        {{ food.name }}
+        <br>
+        {{ food.date }}
+        <br>
+      </div>
+      <br>
+    {% endblock %}
+  </body>
+</html>

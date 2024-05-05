@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet", type ="text/css", href="../static/landing_page.css">
+    <title>Login</title>
+</head>
+<body class="background">
+    {% extends 'base.html' %}
+    {% set active = 'login' %}
+    {% block content %}
+      {% for category, message in get_flashed_messages(with_categories=true) %}
+        <div class="{{ category }}">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </div>
+      {% endfor %}
+      <br>
+      <div class="card mx-auto" style="width: 20rem;">
+        <div class="card-body p-4">
+          <h3 class="mb-4">Sign in</h3>
+          <form method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.username.label(class="form-label") }}
+            {{ form.username(class="form-control", placeholder="Username") }}
+            <br>
+            {{ form.password.label(class="form-label") }}
+            {{ form.password(class="form-control", placeholder="Password") }}
+            <br>
+            <div class="d-grid">
+              {{ form.signin(class="btn btn-primary") }}
+            </div>
+          </form>
+        </div>
+      </div>
+      <br>
+    {% endblock %}
+</body>
+</html>
